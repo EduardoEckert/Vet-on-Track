@@ -30,8 +30,7 @@ namespace VetOnTrack.Controllers
 
             Response response = AcessoBAL.CheckAccess(acesso, out acesso, out idFuncionario);
 
-            if (acesso.nivel != 0)
-            {
+
 
                 if (response.Executed)
                 {
@@ -64,11 +63,8 @@ namespace VetOnTrack.Controllers
 
                     return Redirect("/login");
                 }
-            }
-            else
-            {
-                return Unauthorized();
-            }
+            
+
 
         }
     }
