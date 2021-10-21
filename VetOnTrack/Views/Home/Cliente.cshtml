@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/Table.css" />
+
+
+<body>
+
+
+
+    <h1>Cliente</h1>
+    <hr />
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th class="text-uppercase">ID</th>
+                    <th class="text-uppercase">Nome</th>
+                    <th class="text-uppercase">Pet's'</th>
+                    <th class="text-uppercase">Editar</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in VetOnTrack.Controllers.FrontSupport.SelectListClient())
+                {
+                    <tr>
+                        <td>
+                            <span>@item.id_cliente</span>
+                        </td>
+                        <td>
+                            <span>@item.nome</span>
+                        </td>
+
+                        <td>
+
+
+                                <button type="button" class="collapsible">Lista de Pets
+                                </button>
+                                    <div class="content">
+                            @foreach (var item2 in VetOnTrack.Controllers.FrontSupport.SelectListPet(item.id_cliente))
+                            {
+                                
+                                        <p>Nome: @item2.nome | Raça: @item2.raca</p>
+
+                            }
+                            </div>
+                        </td>
+
+                        <td>
+                            <a href="/cliente/@item.id_cliente/delete" class="btn btn-default">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+
+</body>

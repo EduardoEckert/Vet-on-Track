@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "CadastroServico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ ViewData["Title"] = "Cadastro Serviço"; }
+<link rel="stylesheet" href="~/css/Table.css" />
+
+<div class="input-container">
+
+    <div class="table-wrapper">
+
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th><h1>Cadastrar Serviço</h1></th>
+                </tr>
+            </thead>
+        </table>
+        <br />
+        <form action="/cadastros/authcadastroservico" method="post" class="needs-validation" novalidate>
+
+
+            <h2>Dados do Serviço</h2>
+            <div class="form-row">
+                <div class="form-group col-md-9">
+                    <label for="input_nome">Nome</label>
+                    <input type="text" class="form-control" id="input_nome" name="input_nome" placeholder="Vacina" maxlength="50" value="" required>
+                    <div class="invalid-feedback">
+                        <!--Mensagem em caso de campo inválido-->
+                        Insira um nome!
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="input_valor">Valor (R$)</label>
+                    <input type="number" step="0.01" class="form-control" name="input_valor" id="input_valor" placeholder="ex: 100,00 " max="99999999" value="" required>
+                    <div class="invalid-feedback">
+                        <!--Mensagem em caso de campo inválido-->
+                        Valor inválido!
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id="observacao">
+                <label for="input_observacao">Observação(Opcional)</label>
+                <div class="form-group">
+                    <textarea style="width:500px" class="text" id="input_observacao" name="input_observacao"></textarea>
+                </div>
+                <!--Botão que cadastra caso todos os requisitos sejam preenchidos-->
+                <button id="btn_cadastrar" type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,177 @@
+﻿
+@{ ViewData["Title"] = "Pet"; }
+<link rel="stylesheet" href="~/css/Table.css" />
+
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <tr>
+                <th><h1>Cadastrar Pet</h1> </th>
+            </tr>
+        </thead>
+    </table>
+    <h2><label>Dados</label></h2>
+    <!--Classe que exige a validação dos campos-->
+    <form action="/cadastros/authcadastropet" method="post" class="needs-validation" id="form_pet" novalidate>
+        <div class="form-group col-md-12">
+            <label for="input_id_cliente">Dono</label>
+            <select id="input_id_cliente" name="input_id_cliente" class="form-control" required>
+                <option selected disabled value="">Escolha...</option>
+                @foreach (var item in VetOnTrack.Controllers.FrontSupport.SelectListClient())
+                {
+                    <option value="@item.id_cliente">Nome: @item.nome | Id: @item.id_cliente </option>
+                }
+            </select>
+            <div class="invalid-feedback">
+                <!--Mensagem em caso de campo inválido-->
+                Escolha um Dono!
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for="input_nome_pet">Nome</label>
+                <input type="text" class="form-control" id="input_nome_pet" name="input_nome_pet" placeholder="Bobby" maxlength="50" value="" required>
+                <div class="invalid-feedback">
+                    <!--Mensagem em caso de campo inválido-->
+                    Insira um nome!
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="input_data_de_nascimento">Data de Nascimento</label>
+                <input type="date" class="form-control" id="input_data_de_nascimento_pet" name="input_data_de_nascimento_pet" placeholder="01/01/2000" min="1900-01-01" max="2020-12-31" value="" required>
+                <div class="invalid-feedback">
+                    <!--Mensagem em caso de campo inválido-->
+                    Data inválida!
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="input_especie">Espécie</label>
+
+                <select id="input_especie" name="input_especie" class="form-control" required>
+                    <option selected disabled value="">Escolha...</option>
+                    <option value="Acarás">Acarás</option>
+                    <option value="Agapornis">Agapornis</option>
+                    <option value="Arara">Arara</option>
+                    <option value="Betta">Betta</option>
+                    <option value="Cacatuas">Cacatuas</option>
+                    <option value="Cágados">Cágados</option>
+                    <option value="Calafate">Calafate</option>
+                    <option value="Camundongo (Topolino)">Camundongo (Topolino)</option>
+                    <option value="Canário">Canário</option>
+                    <option value="Canário-da-terra">Canário-da-terra</option>
+                    <option value="Cão (Cachorro)">Cão (Cachorro)</option>
+                    <option value="Caramujos">Caramujos</option>
+                    <option value="Caranguejos">Caranguejos</option>
+                    <option value="Cardeal (ave)">Cardeal (ave)</option>
+                    <option value="Carpa">Carpa</option>
+                    <option value="Cascudos">Cascudos</option>
+                    <option value="Caturra (Calopsita)">Caturra (Calopsita)</option>
+                    <option value="Cavalo">Cavalo</option>
+                    <option value="Chinchila">Chinchila</option>
+                    <option value="Cirurgiões">Cirurgiões</option>
+                    <option value="Cobras (Serpentes)">Cobras (Serpentes)</option>
+                    <option value="Coelho">Coelho</option>
+                    <option value="Coridoras">Coridoras</option>
+                    <option value="Curió">Curió</option>
+                    <option value="Furão (Ferret)">Furão (Ferret)</option>
+                    <option value="Galah">Galah</option>
+                    <option value="Galinha (Galo)">Galinha (Galo)</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Gerbil (Esquilo-da-Mongólia)">Gerbil (Esquilo-da-Mongólia)</option>
+                    <option value="Hamster">Hamster</option>
+                    <option value="Jabutis">Jabutis</option>
+                    <option value="Kinguio">Kinguio</option>
+                    <option value="Lagartos (Teiú, Iguana, gecko, etc…)">Lagartos (Teiú, Iguana, gecko, etc…)</option>
+                    <option value="Mandarim">Mandarim</option>
+                    <option value="Oscar">Oscar</option>
+                    <option value="Papagaios">Papagaios</option>
+                    <option value="Pardal doméstico">Pardal doméstico</option>
+                    <option value="Pato">Pato</option>
+                    <option value="Peixe-palhaço">Peixe-palhaço</option>
+                    <option value="Perereca">Perereca</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Petauro-de-açúcar (Sugar Glider)">Petauro-de-açúcar (Sugar Glider)</option>
+                    <option value="Piriquitos">Piriquitos</option>
+                    <option value="Poecilídeos (Platy, lebiste, etc...)">Poecilídeos (Platy, lebiste, etc...)</option>
+                    <option value="Porco doméstico (Miniporquinho)">Porco doméstico (Miniporquinho)</option>
+                    <option value="Porquinho-da-índia (Cobaia ou Cávia)">Porquinho-da-índia (Cobaia ou Cávia)</option>
+                    <option value="Rato (Twister ou Mecol)">Rato (Twister ou Mecol)</option>
+                    <option value="Salamandras">Salamandras</option>
+                    <option value="Sapos">Sapos</option>
+                    <option value="Tarântulas (Caranguejeiras)">Tarântulas (Caranguejeiras)</option>
+                    <option value="Tartarugas">Tartarugas</option>
+                    <option value="Tetras (Néon, Matogrosso, Rodóstomus, etc...)">Tetras (Néon, Matogrosso, Rodóstomus, etc...)</option>
+                    <option value="Trinca-Ferro">Cacatuas</option>
+                </select>
+                <div class="invalid-feedback">
+                    <!--Mensagem em caso de campo inválido-->
+                    Escolha uma espécie!
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="input_raca">Raça</label>
+                <input type="text" class="form-control" id="input_raca" name="input_raca" placeholder="" maxlength="15" value="" required>
+                <div class="invalid-feedback">
+                    <!--Mensagem em caso de campo inválido-->
+                    Insira uma raça!
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="input_sexo">Sexo</label>
+
+                <select id="input_sexo" name="input_sexo" ; class="form-control" required>
+                    <option selected disabled value="">Escolha...</option>
+                    <option value="M">Macho</option>
+                    <option value="F">Femea</option>
+                </select>
+                <div class="invalid-feedback">
+                    <!--Mensagem em caso de campo inválido-->
+                    Insira um sexo!
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="input_peso">Peso (Kg)</label>
+                <input type="number" step="0.001" class="form-control" id="input_peso" name="input_peso" placeholder="0,700" maxlength="10" max="9999999999" size="10" value="" required>
+                <div class="invalid-feedback">
+                    <!--Mensagem em caso de campo inválido-->
+                    Peso inválido!
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="input_altura">Altura (cm)</label>
+                <input type="text" class="form-control" id="input_altura" name="input_altura" placeholder="70" maxlength="3" value="" required>
+                <div class="invalid-feedback">
+                    <!--Mensagem em caso de campo inválido-->
+                    Altura inválida!
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="input_comprimento">Comprimento (cm)</label>
+                <input type="text" class="form-control" id="input_comprimento" name="input_comprimento" placeholder="70" maxlength="3" value="" required>
+                <div class="invalid-feedback">
+                    <!--Mensagem em caso de campo inválido-->
+                    Comprimento inválido!
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="input_reg_animal">Registro Animal(Opcional)</label>
+            <input type="text" class="form-control" id="input_reg_animal" name="input_reg_animal" placeholder="" maxlength="15">
+        </div>
+        <hr />
+        <div id="observacao">
+            <label for="input_observacao">Observação(Opcional)</label>
+            <div class="form-group">
+                <textarea class="text" id="input_observacao" name="input_observacao"></textarea>
+            </div>
+            <!--Botão que cadastra caso todos os requisitos sejam preenchidos-->
+            <input type="submit" class="btn btn-primary" value="Cadastrar" />
+        </div>
+    </form>
+</div>

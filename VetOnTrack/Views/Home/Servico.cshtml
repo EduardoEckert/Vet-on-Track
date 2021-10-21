@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Servico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/Table.css" />
+
+<h1>Serviços</h1>
+<hr />
+<div class="table-wrapper">
+    <table class="fl-table  top-rad">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Descrição</th>
+                <th></th>
+                <th></th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in VetOnTrack.Controllers.FrontSupport.SelectListService())
+            {
+                <tr>
+                    <td>@item.id_servico</td>
+                    <td>@item.nome</td>
+                    <td>R$@item.valor.ToString(),00</td>
+                    <td>@item.descricao </td>
+                
+                    <td><a href="/servico/@item.id_servico/delete" class="btn btn-default">Deletar</a></td>
+                </tr>
+            }
+        <tbody>
+    </table>
+</div>
+<div>
+    <form action="/Cadastros/CadastroServico" method="post">
+        <input type="submit" name="Novo Servico" value="Novo Serviço" class="btn btn-default" />
+    </form>
+</div>
